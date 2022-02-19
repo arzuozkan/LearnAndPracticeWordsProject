@@ -8,7 +8,7 @@ interface WordsDao {
     suspend fun addWord(word:WordModel)
 
     @Update
-    suspend fun updateWord(word:WordModel)
+    suspend fun updateList(wordList: List<WordModel>)
 
     @Delete
     suspend fun deleteWord(word: WordModel)

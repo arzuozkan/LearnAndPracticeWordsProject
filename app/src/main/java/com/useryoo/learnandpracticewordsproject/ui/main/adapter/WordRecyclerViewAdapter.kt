@@ -21,10 +21,18 @@ class WordRecyclerViewAdapter(private var wordList: List<WordModel>)
     override fun onBindViewHolder(holder: WordListItem, position: Int) {
         val word=wordList[position]
         holder.wordListItemBinding.apply {
-            wordText.text=word.word
-            wordMeaning.text="$wordText meaning"
+            word.let {
+                wordText.text= word.word
+                wordMeaning.text=word.wordDef
+            }
 
         }
+
     }
     override fun getItemCount()=wordList.size
+
+    fun updateWordList(updatedList:List<WordModel>){
+        wordList=updatedList
+        notifyDataSetChanged()
+    }
 }

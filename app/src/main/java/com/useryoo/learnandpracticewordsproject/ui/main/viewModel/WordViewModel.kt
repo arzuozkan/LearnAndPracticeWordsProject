@@ -30,9 +30,9 @@ class WordViewModel(
         }
     }
 
-    fun wordUpdate(word:WordModel){
+    fun wordListUpdate(wordList:List<WordModel>){
         viewModelScope.launch {
-            db.updateWord(word)
+            db.updateList(wordList)
         }
     }
 
