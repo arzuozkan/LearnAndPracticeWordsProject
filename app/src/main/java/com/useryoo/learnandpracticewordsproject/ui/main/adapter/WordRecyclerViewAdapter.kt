@@ -3,9 +3,10 @@ package com.useryoo.learnandpracticewordsproject.ui.main.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.useryoo.learnandpracticewordsproject.data.database.WordModel
 import com.useryoo.learnandpracticewordsproject.databinding.WordListItemBinding
 
-class WordRecyclerViewAdapter(private var wordList:ArrayList<String>)
+class WordRecyclerViewAdapter(private var wordList: List<WordModel>)
     : RecyclerView.Adapter<WordRecyclerViewAdapter.WordListItem>() {
 
         class WordListItem( val wordListItemBinding:WordListItemBinding)
@@ -20,8 +21,8 @@ class WordRecyclerViewAdapter(private var wordList:ArrayList<String>)
     override fun onBindViewHolder(holder: WordListItem, position: Int) {
         val word=wordList[position]
         holder.wordListItemBinding.apply {
-            wordText.text="Word"
-            wordMeaning.text="Word meaning"
+            wordText.text=word.word
+            wordMeaning.text="$wordText meaning"
 
         }
     }
