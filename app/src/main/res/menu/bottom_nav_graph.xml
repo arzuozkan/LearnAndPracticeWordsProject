@@ -2,13 +2,13 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/learn"
+        android:id="@+id/learnFragment"
         android:enabled="true"
         android:title="Learn"
         android:icon="@drawable/learn_icon" />
 
     <item
-        android:id="@+id/practice"
+        android:id="@+id/practiseFragment"
         android:enabled="true"
         android:title="Practice"
         android:icon="@drawable/practice_icon" />

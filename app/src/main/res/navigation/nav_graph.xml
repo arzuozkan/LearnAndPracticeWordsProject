@@ -10,4 +10,9 @@
         android:name="com.useryoo.learnandpracticewordsproject.ui.main.view.LearnFragment"
         android:label="fragment_learn"
         tools:layout="@layout/fragment_learn" />
+    <fragment
+        android:id="@+id/practiseFragment"
+        android:name="com.useryoo.learnandpracticewordsproject.ui.main.view.PractiseFragment"
+        android:label="fragment_practise"
+        tools:layout="@layout/fragment_practise" />
 </navigation>
