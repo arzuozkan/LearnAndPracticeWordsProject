@@ -11,9 +11,9 @@ https://user-images.githubusercontent.com/48025290/155851779-fd6327ad-24c1-46da-
 
 - [x] ViewModel,LiveData,Flow structure usage
 - [x] Room implementation for local database storage
-- [x] RecyclerView component
+- [x] RecyclerView component with DiffUtil
 - [x] Coroutine
-- [x] Repository creation
+- [x] Repository
 - [ ] Retrofit for getting meaning of inserted word by using a dictionary API
 - [ ] FlashCards cretion
 - [ ] WordsDetailed Pages
