@@ -18,8 +18,4 @@ https://user-images.githubusercontent.com/48025290/155852934-0446390d-bcb0-4aed-
 - [ ] FlashCards cretion
 - [ ] WordsDetailed Pages
 
-■■■■■■■■■■■□□□  Loading
-
-
-
-
+![Rounded stripes](https://user-images.githubusercontent.com/48025290/155853726-9e7ae249-76d6-4d7e-a526-e7d546d8ef2e.gif)
