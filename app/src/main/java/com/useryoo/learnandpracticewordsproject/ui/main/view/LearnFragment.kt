@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.useryoo.learnandpracticewordsproject.R
 import com.useryoo.learnandpracticewordsproject.data.database.WordModel
+import com.useryoo.learnandpracticewordsproject.data.database.WordsDao
 import com.useryoo.learnandpracticewordsproject.data.database.WordsDatabase
+import com.useryoo.learnandpracticewordsproject.data.repository.WordRepository
 import com.useryoo.learnandpracticewordsproject.databinding.FragmentLearnBinding
 import com.useryoo.learnandpracticewordsproject.ui.main.adapter.WordsAdapter
 import com.useryoo.learnandpracticewordsproject.ui.main.viewModel.WordViewModel
@@ -25,6 +27,8 @@ import kotlin.math.hypot
 class LearnFragment : Fragment(R.layout.fragment_learn) {
     private lateinit var wordList:List<WordModel>
     private lateinit var wordsDatabase: WordsDatabase
+    private lateinit var wordDao:WordsDao
+    private lateinit var repository: WordRepository
     private lateinit var wordViewModel: WordViewModel
     private lateinit var wordsAdapter:WordsAdapter
     private lateinit var binding:FragmentLearnBinding
@@ -33,6 +37,7 @@ class LearnFragment : Fragment(R.layout.fragment_learn) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         wordsDatabase= WordsDatabase.getWordsDatabase(requireContext())!!
+        //repository.allWords
     }
 
     override fun onCreateView(
@@ -42,19 +47,21 @@ class LearnFragment : Fragment(R.layout.fragment_learn) {
     ): View {
         //binding= FragmentLearnBinding.inflate(inflater,container,false)
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_learn,container,false)
-
         val application= requireNotNull(this.activity).application
-        val dataSource=WordsDatabase.getWordsDatabase(application)?.wordsDao
-        val viewModalFactory=dataSource?.let { WordViewModelFactory(it,application) }
-        wordViewModel=viewModalFactory?.let {
-            ViewModelProvider(this,it)[WordViewModel::class.java]
-        }!!
+        //val dataSource=WordsDatabase.getWordsDatabase(application)?.wordsDao
+        repository=WordRepository(wordsDatabase.wordsDao)
 
-        wordViewModel.wordsList.observe(viewLifecycleOwner){
-            wordList=it
+        val viewModalFactory= WordViewModelFactory(repository,application)
+        wordViewModel= viewModalFactory.let {
+            ViewModelProvider(this, it)[WordViewModel::class.java]
+        }
+
+        wordViewModel.allWords.observe(viewLifecycleOwner){list ->
             wordsAdapter= WordsAdapter()
-
             binding.adapter=wordsAdapter
+            list.let {
+                wordsAdapter.submitList(it)
+            }
             //wordRecyclerViewAdapter.updateWordList(wordList)
 
         }
@@ -80,7 +87,7 @@ class LearnFragment : Fragment(R.layout.fragment_learn) {
                     Snackbar.make(requireView(),"Please enter a word",2000).show()
                 }
                 else{
-                    wordViewModel.wordAdd(
+                    wordViewModel.insert(
                     WordModel(word=wordInput,
                         wordDef = "Word Meaning",
                         wordExample = "Example")
@@ -97,7 +104,7 @@ class LearnFragment : Fragment(R.layout.fragment_learn) {
     }
 
     private fun displayAllWords() {
-        wordViewModel.wordsList.observe(viewLifecycleOwner){ wordsList ->
+        wordViewModel.allWords.observe(viewLifecycleOwner){ wordsList ->
             wordList=wordsList
             binding.apply {
                 if(wordList.isEmpty()){

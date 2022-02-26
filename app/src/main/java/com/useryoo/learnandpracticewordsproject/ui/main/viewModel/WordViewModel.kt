@@ -9,7 +9,8 @@ import kotlinx.coroutines.launch
 
 class WordViewModel(
     private val repository: WordRepository,
-) : ViewModel(){
+    application: Application
+) : AndroidViewModel(application){
     val allWords:LiveData<List<WordModel>> = repository.allWords.asLiveData()
 
     fun insert(word:WordModel){
