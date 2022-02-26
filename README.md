@@ -7,7 +7,7 @@ The application is used for english learner that can add new words they've learn
 
 https://user-images.githubusercontent.com/48025290/155851779-fd6327ad-24c1-46da-a0c5-7834589f9c35.mp4
 
-# TO-DO List
+# 🛠️ TO-DO List
 
 - [x] ViewModel,LiveData,Flow structure usage
 - [x] Room implementation for local database storage
