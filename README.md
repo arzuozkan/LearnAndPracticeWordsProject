@@ -4,8 +4,8 @@ This project is being developed by Kotlin programming language to practice the t
 The application is used for english learner that can add new words they've learnt and practice with the flashcards. The words will be translated english to english.
 
 
+https://user-images.githubusercontent.com/48025290/155852934-0446390d-bcb0-4aed-91cb-78f55ec2bf54.mp4
 
-https://user-images.githubusercontent.com/48025290/155851779-fd6327ad-24c1-46da-a0c5-7834589f9c35.mp4
 
 # 🛠️ TO-DO List
 
@@ -17,6 +17,8 @@ https://user-images.githubusercontent.com/48025290/155851779-fd6327ad-24c1-46da-
 - [ ] Retrofit for getting meaning of inserted word by using a dictionary API
 - [ ] FlashCards cretion
 - [ ] WordsDetailed Pages
+
+■■■■■■■■■■■□□□  Loading
 
 
 
