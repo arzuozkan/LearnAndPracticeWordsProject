@@ -16,7 +16,7 @@ import com.useryoo.learnandpracticewordsproject.R
 import com.useryoo.learnandpracticewordsproject.data.database.WordModel
 import com.useryoo.learnandpracticewordsproject.data.database.WordsDatabase
 import com.useryoo.learnandpracticewordsproject.databinding.FragmentLearnBinding
-import com.useryoo.learnandpracticewordsproject.ui.main.adapter.WordRecyclerViewAdapter
+import com.useryoo.learnandpracticewordsproject.ui.main.adapter.WordsAdapter
 import com.useryoo.learnandpracticewordsproject.ui.main.viewModel.WordViewModel
 import com.useryoo.learnandpracticewordsproject.ui.main.viewModel.WordViewModelFactory
 import kotlin.math.hypot
@@ -26,7 +26,7 @@ class LearnFragment : Fragment(R.layout.fragment_learn) {
     private lateinit var wordList:List<WordModel>
     private lateinit var wordsDatabase: WordsDatabase
     private lateinit var wordViewModel: WordViewModel
-    private lateinit var wordRecyclerViewAdapter:WordRecyclerViewAdapter
+    private lateinit var wordsAdapter:WordsAdapter
     private lateinit var binding:FragmentLearnBinding
     //private val binding by viewBinding(FragmentLearnBinding::bind)
 
@@ -52,9 +52,9 @@ class LearnFragment : Fragment(R.layout.fragment_learn) {
 
         wordViewModel.wordsList.observe(viewLifecycleOwner){
             wordList=it
-            wordRecyclerViewAdapter= WordRecyclerViewAdapter(wordList)
+            wordsAdapter= WordsAdapter()
 
-            binding.adapter=wordRecyclerViewAdapter
+            binding.adapter=wordsAdapter
             //wordRecyclerViewAdapter.updateWordList(wordList)
 
         }

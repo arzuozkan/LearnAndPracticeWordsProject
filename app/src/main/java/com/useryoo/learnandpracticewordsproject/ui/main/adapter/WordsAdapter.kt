@@ -2,12 +2,12 @@ package com.useryoo.learnandpracticewordsproject.ui.main.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.useryoo.learnandpracticewordsproject.data.database.WordModel
 import com.useryoo.learnandpracticewordsproject.databinding.WordListItemBinding
 
-class WordRecyclerViewAdapter(private var wordList: List<WordModel>)
-    : RecyclerView.Adapter<WordRecyclerViewAdapter.WordListItem>() {
+class WordsAdapter: ListAdapter<WordModel,WordsAdapter.WordListItem>(DiffUtilCallback()) {
 
         class WordListItem( val wordListItemBinding:WordListItemBinding)
             :RecyclerView.ViewHolder(wordListItemBinding.root)
@@ -19,20 +19,12 @@ class WordRecyclerViewAdapter(private var wordList: List<WordModel>)
 
     }
     override fun onBindViewHolder(holder: WordListItem, position: Int) {
-        val word=wordList[position]
+        val word=getItem(position)
         holder.wordListItemBinding.apply {
             word.let {
                 wordText.text= word.word
                 wordMeaning.text=word.wordDef
             }
-
         }
-
-    }
-    override fun getItemCount()=wordList.size
-
-    fun updateWordList(updatedList:List<WordModel>){
-        wordList=updatedList
-        notifyDataSetChanged()
     }
 }

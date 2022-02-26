@@ -6,7 +6,7 @@
     <data>
         <variable
             name="adapter"
-            type="com.useryoo.learnandpracticewordsproject.ui.main.adapter.WordRecyclerViewAdapter" />
+            type="com.useryoo.learnandpracticewordsproject.ui.main.adapter.WordsAdapter" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
